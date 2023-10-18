@@ -21,13 +21,12 @@ class TestBooksCollector:
 
     def test_add_book_in_favorites(self):
         collector = BooksCollector()
-        collector.add_new_book('Что делать, если ваш кот хочет вас убить')
-        collector.set_book_genre('Что делать, если ваш кот хочет вас убить', 'Комедии')
-        assert collector.get_list_of_favorites_books() == ['Что делать, если ваш кот хочет вас убить']
+        collector.books_genre = {'Что делать, если ваш кот хочет вас убить': 'Комедии' }
+        collector.add_book_in_favorites('Что делать, если ваш кот хочет вас убить')
+        assert 'Что делать, если ваш кот хочет вас убить' in collector.get_list_of_favorites_books()
 
     def test_delete_book_from_favorites(self):
         collector = BooksCollector()
-        collector.add_new_book('Что делать, если ваш кот хочет вас убить')
-        collector.set_book_genre('Что делать, если ваш кот хочет вас убить', 'Комедии')
-        assert collector.get_list_of_favorites_books() == []
-
+        collector.add_book_in_favorites('Что делать, если ваш кот хочет вас убить')
+        collector.delete_book_from_favorites('Что делать, если ваш кот хочет вас убить')
+        assert 'Что делать, если ваш кот хочет вас убить' not in collector.get_list_of_favorites_books()
