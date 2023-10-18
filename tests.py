@@ -4,11 +4,6 @@ from main import BooksCollector
 # обязательно указывать префикс Test
 class TestBooksCollector:
 
-    # пример теста:
-    # обязательно указывать префикс test_
-    # дальше идет название метода, который тестируем add_new_book_
-    # затем, что тестируем add_two_books - добавление двух книг
-
     def test_add_new_book_add_two_books(self):
         collector = BooksCollector()
         collector.add_new_book('Гордость и предубеждение и зомби')
@@ -20,4 +15,12 @@ class TestBooksCollector:
         collector.add_new_book('Гордость и предубеждение и зомби')
         collector.set_book_genre('Гордость и предубеждение и зомби', 'Ужасы')
         assert collector.get_book_genre('Гордость и предубеждение и зомби') == 'Ужасы'
+
+    def test_get_books_for_children(self):
+        collector = BooksCollector()
+        collector.add_new_book('Что делать, если ваш кот хочет вас убить')
+        collector.set_book_genre('Что делать, если ваш кот хочет вас убить', 'Комедии')
+        assert collector.get_book_genre('Что делать, если ваш кот хочет вас убить') == 'Комедии'
+
+
 
