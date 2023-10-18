@@ -22,5 +22,15 @@ class TestBooksCollector:
         collector.set_book_genre('Что делать, если ваш кот хочет вас убить', 'Комедии')
         assert collector.get_book_genre('Что делать, если ваш кот хочет вас убить') == 'Комедии'
 
+    def test_add_book_in_favorites(self, name, scope='function'):
+        collector = BooksCollector()
+        collector.add_new_book('Что делать, если ваш кот хочет вас убить')
+        collector.set_book_genre('Что делать, если ваш кот хочет вас убить', 'Комедии')
+        assert collector.get_list_of_favorites_books == 'Что делать, если ваш кот хочет вас убить'
 
+    def test_delete_book_from_favorites(self, name, scope='function'):
+        collector = BooksCollector()
+        collector.add_new_book('Что делать, если ваш кот хочет вас убить')
+        collector.set_book_genre('Что делать, если ваш кот хочет вас убить', 'Комедии')
+        assert collector.get_list_of_favorites_books == None
 
